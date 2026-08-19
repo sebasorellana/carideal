@@ -1,0 +1,83 @@
+.page {
+  --screen-padding-top: clamp(1.5rem, 4svh, 3rem);
+  --screen-padding-bottom: clamp(1.5rem, 4svh, 3rem);
+  --screen-compact-alignment: start;
+  --screen-compact-padding-top: 1rem;
+  --screen-compact-padding-bottom: 1rem;
+  --screen-small-padding-top: 0.75rem;
+  --screen-small-padding-bottom: 0.75rem;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.helpRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.helpIcon {
+  width: clamp(3.25rem, 14.5vw, 4.25rem);
+  height: auto;
+}
+
+.form {
+  display: grid;
+  gap: clamp(1rem, 4.7vw, 1.25rem);
+}
+
+.submit {
+  width: min(100%, 17rem);
+  margin: clamp(0.25rem, 1.8vw, 0.5rem) auto 0;
+}
+
+@media (max-height: 900px) {
+  .helpRow {
+    margin-bottom: 0.5rem;
+  }
+
+  .helpIcon {
+    width: 3.25rem;
+  }
+
+  .form {
+    gap: 0.75rem;
+  }
+
+  .submit {
+    margin-top: 0.2rem;
+  }
+}
+
+@media (max-height: 700px) {
+  .helpRow {
+    margin-bottom: 0.35rem;
+  }
+
+  .helpIcon {
+    width: 2.5rem;
+  }
+
+  .form {
+    gap: 0.45rem;
+  }
+
+  .submit {
+    margin-top: 0.1rem;
+  }
+}
+
+@media (max-height: 600px) {
+  .helpRow {
+    margin-bottom: 0.25rem;
+  }
+
+  .helpIcon {
+    width: 2rem;
+  }
+
+  .form {
+    gap: 0.35rem;
+  }
+}

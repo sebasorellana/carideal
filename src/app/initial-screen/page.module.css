@@ -1,0 +1,82 @@
+.page {
+  --screen-padding-top: 15.4svh;
+  --screen-padding-bottom: 1rem;
+  --screen-compact-alignment: start;
+  --screen-compact-padding-top: 15.4svh;
+  --screen-compact-padding-bottom: 1rem;
+  --screen-small-padding-top: 12svh;
+  --screen-small-padding-bottom: 0.75rem;
+
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.background {
+  position: absolute;
+  top: 17.3svh;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  animation: backgroundFade 240ms ease-out;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  display: block;
+  width: clamp(10rem, 40vw, 13.5rem);
+  height: auto;
+  margin-bottom: clamp(2.75rem, 13vw, 3.5rem);
+}
+
+.footer {
+  position: absolute;
+  right: var(--page-gutter);
+  bottom: calc(clamp(2.5rem, 7svh, 5rem) + env(safe-area-inset-bottom));
+  left: var(--page-gutter);
+  z-index: 2;
+  width: auto;
+  max-width: 28.5rem;
+  margin-inline: auto;
+}
+
+.pagination {
+  margin-top: clamp(1.35rem, 5.8vw, 1.65rem);
+}
+
+@media (max-height: 650px) {
+  .background {
+    top: 14svh;
+  }
+
+  .logo {
+    width: 8.5rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .footer {
+    bottom: 2rem;
+  }
+}
+
+@keyframes backgroundFade {
+  from {
+    opacity: 0.72;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .background {
+    animation: none;
+  }
+}

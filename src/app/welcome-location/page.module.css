@@ -1,0 +1,106 @@
+.page {
+  --screen-background: url("/images/welcome-location/welcome-background.webp")
+    center / cover no-repeat;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.locationCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
+  padding: clamp(1rem, 3.9vw, 1.25rem) clamp(1rem, 4.2vw, 1.5rem)
+    clamp(1.65rem, 6.7vw, 2rem);
+  border-radius: clamp(1.25rem, 5.2vw, 2rem);
+  background: rgb(255 255 255 / 96%);
+  box-shadow: 0 1rem 3rem rgb(25 10 14 / 4%);
+  text-align: center;
+}
+
+.locationSymbol {
+  width: clamp(6.6rem, 29vw, 8.5rem);
+  height: auto;
+  border-radius: 50%;
+}
+
+.cardTitle {
+  margin: clamp(1.4rem, 6.8vw, 1.8rem) 0 0;
+  color: #000;
+  font-size: clamp(1.08rem, 4.5vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+
+.description {
+  margin: clamp(1rem, 5.1vw, 1.35rem) 0 0;
+  color: #090909;
+  font-size: clamp(0.88rem, 3.65vw, 1.15rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.42;
+}
+
+.actions {
+  display: grid;
+  width: 100%;
+  gap: clamp(1.1rem, 5.8vw, 1.6rem);
+  margin-top: clamp(1.8rem, 8.2vw, 2.25rem);
+}
+
+.skipButton {
+  justify-self: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  font-size: clamp(0.95rem, 3.9vw, 1.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.skipButton:focus-visible {
+  border-radius: 0.25rem;
+  outline: 0.2rem solid rgb(0 0 0 / 20%);
+  outline-offset: 0.25rem;
+}
+
+@media (max-height: 760px) {
+  .cardTitle {
+    margin-top: 1rem;
+  }
+
+  .description {
+    margin-top: 0.75rem;
+  }
+
+  .actions {
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+}
+
+@media (max-height: 600px) {
+  .locationCard {
+    padding-block: 0.7rem 1rem;
+  }
+
+  .locationSymbol {
+    width: 5.25rem;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.78rem;
+  }
+
+  .actions {
+    gap: 0.7rem;
+    margin-top: 0.9rem;
+  }
+}

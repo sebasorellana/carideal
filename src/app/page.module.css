@@ -1,0 +1,36 @@
+.form,
+.fields,
+.actions {
+  display: grid;
+}
+
+.fields {
+  gap: clamp(1.8rem, 6.8vw, 2.4rem);
+}
+
+.actions {
+  gap: clamp(2.6rem, 8.2vw, 2.9rem);
+  margin-top: clamp(2.6rem, 8.1vw, 2.9rem);
+}
+
+@media (max-height: 900px) {
+  .fields {
+    gap: 1.35rem;
+  }
+
+  .actions {
+    gap: 1.75rem;
+    margin-top: 1.75rem;
+  }
+}
+
+@media (max-height: 650px) {
+  .fields {
+    gap: 0.75rem;
+  }
+
+  .actions {
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+}
