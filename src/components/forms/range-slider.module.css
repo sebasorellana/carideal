@@ -20,6 +20,12 @@
   line-height: 1.2;
 }
 
+.valueDescription {
+  color: var(--color-muted);
+  font-size: 0.85em;
+  font-weight: 400;
+}
+
 .track {
   position: relative;
   height: 1.5rem;
@@ -80,6 +86,14 @@
 
 .input:focus-visible::-webkit-slider-thumb {
   box-shadow: 0 0 0 0.2rem rgb(208 4 59 / 20%);
+}
+
+.singleTrack {
+  margin-top: 0.85rem;
+}
+
+.singleInput {
+  pointer-events: auto;
 }
 
 @media (max-height: 900px) {

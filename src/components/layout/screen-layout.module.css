@@ -1,7 +1,7 @@
 .page {
-  min-height: 100svh;
+  min-height: var(--screen-min-height, 100%);
   padding-block-start: max(
-    var(--screen-padding-top, clamp(7.5rem, 20svh, 15.5rem)),
+    var(--screen-padding-top, clamp(2.25rem, 7svh, 4rem)),
     env(safe-area-inset-top)
   );
   padding-inline: max(var(--page-gutter), env(safe-area-inset-left))
@@ -15,7 +15,7 @@
 
 .content {
   width: 100%;
-  max-width: 28.5rem;
+  max-width: 34rem;
   margin-inline: auto;
 }
 

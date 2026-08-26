@@ -13,6 +13,17 @@ type RangeSliderProps = {
   step?: number;
 };
 
+type SingleRangeSliderProps = {
+  label: string;
+  maximum: number;
+  minimum: number;
+  name: string;
+  onChange: (value: number) => void;
+  step?: number;
+  value: number;
+  valueDescription?: string;
+};
+
 type RangeStyle = CSSProperties & {
   "--range-end": string;
   "--range-start": string;
@@ -102,6 +113,54 @@ export function RangeSlider({
           step={step}
           type="range"
           value={upperValue}
+        />
+      </div>
+    </div>
+  );
+}
+
+export function SingleRangeSlider({
+  label,
+  maximum,
+  minimum,
+  name,
+  onChange,
+  step = 1,
+  value,
+  valueDescription,
+}: SingleRangeSliderProps) {
+  const labelId = useId();
+  const progress = ((value - minimum) / (maximum - minimum)) * 100;
+  const rangeStyle: RangeStyle = {
+    "--range-end": `${progress}%`,
+    "--range-start": "0%",
+  };
+
+  return (
+    <div
+      aria-labelledby={labelId}
+      className={styles.range}
+      role="group"
+      style={rangeStyle}
+    >
+      <h3 className={styles.label} id={labelId}>
+        {label}
+        {valueDescription && (
+          <span className={styles.valueDescription}> {valueDescription}</span>
+        )}
+      </h3>
+      <div className={`${styles.track} ${styles.singleTrack}`}>
+        <input
+          aria-label={label}
+          aria-valuetext={valueDescription}
+          className={`${styles.input} ${styles.singleInput}`}
+          max={maximum}
+          min={minimum}
+          name={name}
+          onChange={(event) => onChange(Number(event.target.value))}
+          step={step}
+          type="range"
+          value={value}
         />
       </div>
     </div>

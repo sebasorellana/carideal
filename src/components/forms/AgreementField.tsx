@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CheckIcon } from "@/components/icons/CheckIcon";
 import styles from "./form-controls.module.css";
 
@@ -20,9 +21,9 @@ export function AgreementField({ id }: AgreementFieldProps) {
         </span>
         <span>Acepto</span>
       </label>
-      <a className={styles.termsLink} href="#terminos">
+      <Link className={styles.termsLink} href="/terms-and-conditions">
         Términos y condiciones
-      </a>
+      </Link>
     </div>
   );
 }

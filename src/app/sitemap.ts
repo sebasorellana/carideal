@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: getAbsoluteUrl("/"),
+      url: getAbsoluteUrl("/create-account"),
       changeFrequency: "monthly",
       priority: 0.8,
     },

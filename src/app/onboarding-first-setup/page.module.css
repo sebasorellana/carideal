@@ -28,7 +28,7 @@
 }
 
 .submit {
-  width: min(100%, 17rem);
+  width: 100%;
   margin: clamp(0.25rem, 1.8vw, 0.5rem) auto 0;
 }
 

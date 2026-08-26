@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { FormField } from "@/components/forms/FormField";
-import { PrimaryButton } from "@/components/forms/PrimaryButton";
+import { PrimaryLink } from "@/components/forms/PrimaryLink";
 import { RangeSlider } from "@/components/forms/RangeSlider";
 import { ScreenIntro } from "@/components/layout/ScreenIntro";
 import layoutStyles from "@/components/layout/screen-layout.module.css";
@@ -93,7 +93,9 @@ export default function OnboardingFirstSetupPage() {
           </BorderedPanel>
 
           <div className={styles.submit}>
-            <PrimaryButton shape="pill">Buscar autos</PrimaryButton>
+            <PrimaryLink href="/car-list" shape="pill">
+              Buscar autos
+            </PrimaryLink>
           </div>
         </form>
       </section>

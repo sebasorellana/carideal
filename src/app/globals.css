@@ -6,7 +6,8 @@
   --color-brand: #d0043b;
   --color-control-border: #929292;
   --font-sans: Poppins, Arial, sans-serif;
-  --page-gutter: clamp(1.5rem, 9.85vw, 3.5rem);
+  --page-gutter: clamp(1.25rem, 6.5vw, 2.5rem);
+  --app-header-height: clamp(5.25rem, 14.8vw, 6rem);
 }
 
 html {

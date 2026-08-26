@@ -87,7 +87,7 @@ export function InitialScreenCarousel() {
       <footer className={styles.footer}>
         <PrimaryLink
           endIcon={<ArrowRightIcon />}
-          href="/"
+          href="/create-account"
           shape="pill"
         >
           Comienza este viaje

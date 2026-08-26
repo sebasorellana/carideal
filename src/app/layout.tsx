@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "@fontsource/poppins/latin-400.css";
 import "@fontsource/poppins/latin-500.css";
 import "@fontsource/poppins/latin-800.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { NavigationShell } from "@/components/layout/NavigationShell";
 import { getAbsoluteUrl, siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -102,7 +102,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es">
       <body>
-        {children}
+        <NavigationShell>{children}</NavigationShell>
         <script
           dangerouslySetInnerHTML={{ __html: structuredDataJson }}
           type="application/ld+json"

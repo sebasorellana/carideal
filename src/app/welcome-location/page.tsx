@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { PrimaryLink } from "@/components/forms/PrimaryLink";
 import { ScreenIntro } from "@/components/layout/ScreenIntro";
 import layoutStyles from "@/components/layout/screen-layout.module.css";
@@ -50,9 +51,9 @@ export default function WelcomeLocationPage() {
             <PrimaryLink href="/onboarding-first-setup" shape="pill">
               Permitir ubicación
             </PrimaryLink>
-            <button className={styles.skipButton} type="button">
+            <Link className={styles.skipButton} href="/onboarding-first-setup">
               Omitir
-            </button>
+            </Link>
           </div>
         </div>
       </section>
