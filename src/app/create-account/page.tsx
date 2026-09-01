@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { AgreementField } from "@/components/forms/AgreementField";
 import { FormField } from "@/components/forms/FormField";
 import { PrimaryLink } from "@/components/forms/PrimaryLink";
+import { MailIcon } from "@/components/icons/MailIcon";
+import { UserIcon } from "@/components/icons/UserIcon";
 import { ScreenIntro } from "@/components/layout/ScreenIntro";
 import layoutStyles from "@/components/layout/screen-layout.module.css";
 import styles from "./page.module.css";
@@ -23,41 +26,58 @@ export default function CreateAccountPage() {
         aria-labelledby="create-account-title"
       >
         <ScreenIntro title="Crear cuenta" titleId="create-account-title">
-          Completa tus datos para
-          <br />
-          comenzar.
+          Completa tus datos para comenzar.
         </ScreenIntro>
 
         <form className={styles.form} aria-label="Crear cuenta">
           <div className={styles.fields}>
             <FormField
               autoComplete="given-name"
+              icon={<UserIcon />}
               id="first-name"
               label="Nombre"
+              labelSpacing="tight"
               name="firstName"
               type="text"
             />
             <FormField
               autoComplete="family-name"
+              icon={<UserIcon />}
               id="last-name"
               label="Apellido"
+              labelSpacing="tight"
               name="lastName"
               type="text"
             />
             <FormField
               autoComplete="email"
+              icon={<MailIcon />}
               id="email"
               label="Email"
+              labelSpacing="tight"
               name="email"
               type="email"
             />
           </div>
 
           <div className={styles.actions}>
-            <AgreementField id="terms-accepted" />
-            <PrimaryLink href="/welcome-location" shape="pill">
-              Crear cuenta
-            </PrimaryLink>
+            <div className={styles.agreements}>
+              <AgreementField id="terms-accepted" />
+              <AgreementField
+                href="/privacy-policy"
+                id="privacy-policy-accepted"
+                linkLabel="Políticas de privacidad"
+                prefix="Acepto las"
+              />
+            </div>
+            <div className={styles.submitGroup}>
+              <PrimaryLink href="/welcome-location" shape="pill">
+                Crear cuenta
+              </PrimaryLink>
+              <Link className={styles.accountLink} href="/login">
+                Ya tengo una cuenta
+              </Link>
+            </div>
           </div>
         </form>
       </section>

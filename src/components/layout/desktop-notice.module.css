@@ -1,0 +1,27 @@
+.notice {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .notice {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--page-gutter);
+    background: var(--color-paper);
+  }
+}
+
+.message {
+  max-width: 32rem;
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+}

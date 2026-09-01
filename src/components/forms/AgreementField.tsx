@@ -3,10 +3,18 @@ import { CheckIcon } from "@/components/icons/CheckIcon";
 import styles from "./form-controls.module.css";
 
 type AgreementFieldProps = {
+  href?: string;
   id: string;
+  linkLabel?: string;
+  prefix?: string;
 };
 
-export function AgreementField({ id }: AgreementFieldProps) {
+export function AgreementField({
+  href = "/terms-and-conditions",
+  id,
+  linkLabel = "Términos y condiciones",
+  prefix = "Acepto",
+}: AgreementFieldProps) {
   return (
     <div className={styles.agreement}>
       <input
@@ -19,10 +27,10 @@ export function AgreementField({ id }: AgreementFieldProps) {
         <span className={styles.checkbox} aria-hidden="true">
           <CheckIcon />
         </span>
-        <span>Acepto</span>
+        <span>{prefix}</span>
       </label>
-      <Link className={styles.termsLink} href="/terms-and-conditions">
-        Términos y condiciones
+      <Link className={styles.termsLink} href={href}>
+        {linkLabel}
       </Link>
     </div>
   );

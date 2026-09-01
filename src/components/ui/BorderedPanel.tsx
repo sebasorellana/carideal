@@ -3,8 +3,13 @@ import styles from "./bordered-panel.module.css";
 
 type BorderedPanelProps = {
   children: ReactNode;
+  compact?: boolean;
 };
 
-export function BorderedPanel({ children }: BorderedPanelProps) {
-  return <div className={styles.panel}>{children}</div>;
+export function BorderedPanel({ children, compact = false }: BorderedPanelProps) {
+  return (
+    <div className={`${styles.panel} ${compact ? styles.compact : ""}`}>
+      {children}
+    </div>
+  );
 }

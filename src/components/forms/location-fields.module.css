@@ -1,0 +1,23 @@
+.locationRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.65rem, 2.8vw, 0.9rem);
+}
+
+@media (max-height: 900px) {
+  .locationRow {
+    gap: 0.6rem;
+  }
+}
+
+@media (max-height: 700px) {
+  .locationRow {
+    gap: 0.45rem;
+  }
+}
+
+@media (max-height: 600px) {
+  .locationRow {
+    gap: 0.35rem;
+  }
+}

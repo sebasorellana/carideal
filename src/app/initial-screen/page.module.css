@@ -38,9 +38,9 @@
 
 .footer {
   position: absolute;
-  right: var(--page-gutter);
+  right: max(var(--page-gutter), env(safe-area-inset-right));
   bottom: calc(clamp(2.5rem, 7svh, 5rem) + env(safe-area-inset-bottom));
-  left: var(--page-gutter);
+  left: max(var(--page-gutter), env(safe-area-inset-left));
   z-index: 2;
   width: auto;
   max-width: 28.5rem;

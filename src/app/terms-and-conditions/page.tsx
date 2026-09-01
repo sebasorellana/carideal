@@ -3,6 +3,8 @@ import { PlaceholderScreen } from "@/components/layout/PlaceholderScreen";
 
 export const metadata: Metadata = {
   title: "Términos y condiciones",
+  description:
+    "El contenido de términos y condiciones estará disponible próximamente.",
   robots: { index: false, follow: true },
 };
 

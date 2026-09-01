@@ -13,8 +13,12 @@ type NavigationShellProps = {
 
 export function NavigationShell({ children }: NavigationShellProps) {
   const pathname = usePathname();
+  const normalizedPathname =
+    pathname !== "/" && pathname.endsWith("/")
+      ? pathname.slice(0, -1)
+      : pathname;
 
-  if (headerlessRoutes.has(pathname)) {
+  if (headerlessRoutes.has(normalizedPathname)) {
     return <div className={styles.headerlessViewport}>{children}</div>;
   }
 

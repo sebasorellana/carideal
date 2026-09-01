@@ -1,0 +1,333 @@
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding-block: 0.5rem;
+}
+
+.avatar {
+  display: grid;
+  flex: 0 0 auto;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  background: var(--color-brand);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  place-items: center;
+}
+
+.profileDetails {
+  display: grid;
+  min-width: 0;
+  gap: 0.15rem;
+}
+
+.profileName {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: clamp(1.02rem, 4vw, 1.15rem);
+  font-weight: 800;
+}
+
+.profileEmail {
+  margin: 0;
+  overflow: hidden;
+  color: var(--color-muted);
+  font-size: clamp(0.85rem, 3.2vw, 0.95rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.divider {
+  height: 1px;
+  margin-block: 0.4rem;
+  background: #e4e4e4;
+}
+
+.link {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.55rem 0.35rem;
+  align-items: center;
+  gap: 0.75rem;
+  border: 0;
+  border-radius: 0.85rem;
+  background: none;
+  color: #161616;
+  font-size: clamp(0.95rem, 3.7vw, 1.05rem);
+  font-weight: 500;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.linkIcon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  background: #f5f5f5;
+  color: #6b6b6b;
+  place-items: center;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.linkIcon svg {
+  width: 1.15rem;
+  height: auto;
+}
+
+.linkLabel {
+  flex: 1 1 auto;
+}
+
+.chevron {
+  display: grid;
+  flex: 0 0 auto;
+  color: #999;
+  transition: color 180ms ease, transform 220ms ease;
+}
+
+.chevron svg {
+  width: 0.5rem;
+  height: auto;
+}
+
+.link:focus-visible {
+  outline: 0.16rem solid rgb(208 4 59 / 25%);
+  outline-offset: 0.15rem;
+}
+
+.passwordHeading {
+  display: flex;
+  margin: 0;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.35rem;
+  color: #161616;
+  font-size: clamp(0.95rem, 3.7vw, 1.05rem);
+  font-weight: 500;
+}
+
+.passwordForm {
+  display: grid;
+  padding-inline: 0.35rem;
+}
+
+.passwordFields {
+  display: grid;
+  margin-top: clamp(0.9rem, 3.5vw, 1.2rem);
+  gap: clamp(1.2rem, 4.5vw, 1.6rem);
+}
+
+.passwordActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: clamp(1.4rem, 5vw, 1.8rem);
+}
+
+.cancelButton {
+  flex: 0 0 auto;
+  padding: 0 0.5rem;
+  border: 0;
+  background: none;
+  color: var(--color-muted);
+  font-size: clamp(0.95rem, 3.6vw, 1.05rem);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.saveButton {
+  flex: 1 1 auto;
+}
+
+.passwordSaved {
+  margin: 0.9rem 0 0;
+  padding-inline: 0.35rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.logout {
+  display: flex;
+  width: 100%;
+  height: clamp(3.55rem, 13.8vw, 4.9rem);
+  margin-top: clamp(1.5rem, 5vw, 2rem);
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-brand);
+  color: #fff;
+  font-size: clamp(1rem, 3.8vw, 1.22rem);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 160ms ease, transform 120ms ease;
+}
+
+.logout:active {
+  transform: scale(0.99);
+}
+
+.logout:focus-visible {
+  outline: 0.2rem solid rgb(208 4 59 / 30%);
+  outline-offset: 0.2rem;
+}
+
+.deleteAccount {
+  display: flex;
+  width: 100%;
+  margin-top: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.75rem;
+  border: 0;
+  background: none;
+  color: var(--color-brand);
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+}
+
+.deleteAccountIcon {
+  display: inline-flex;
+}
+
+.deleteAccountIcon svg {
+  width: 0.95rem;
+  height: auto;
+}
+
+.deleteOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(var(--page-gutter), env(safe-area-inset-top))
+    max(var(--page-gutter), env(safe-area-inset-right))
+    max(var(--page-gutter), env(safe-area-inset-bottom))
+    max(var(--page-gutter), env(safe-area-inset-left));
+}
+
+.deleteBackdrop {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  background: rgb(0 0 0 / 38%);
+  backdrop-filter: blur(6px);
+  cursor: default;
+}
+
+.deleteDialog {
+  position: relative;
+  width: min(100%, 22rem);
+  padding: clamp(1.5rem, 6vw, 1.9rem) clamp(1.25rem, 5vw, 1.6rem);
+  border-radius: clamp(1rem, 3.5vw, 1.35rem);
+  background: var(--color-surface);
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 22%);
+  text-align: center;
+}
+
+.deleteTitle {
+  margin: 0 0 0.5rem;
+  color: var(--color-ink);
+  font-size: clamp(1.05rem, 4.2vw, 1.2rem);
+  font-weight: 700;
+}
+
+.deleteMessage {
+  margin: 0 0 clamp(1.15rem, 4.5vw, 1.4rem);
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.deleteActions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.deleteCancel,
+.deleteConfirm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.1rem;
+  border-radius: 999px;
+  font-size: clamp(0.92rem, 3.6vw, 1.02rem);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.deleteCancel {
+  border: 0;
+  background: #000;
+  color: #fff;
+}
+
+.deleteConfirm {
+  border: 1.5px solid var(--color-brand);
+  background: transparent;
+  color: var(--color-brand);
+}
+
+.deleteCancel:focus-visible,
+.deleteConfirm:focus-visible {
+  outline: 0.16rem solid rgb(208 4 59 / 30%);
+  outline-offset: 0.16rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    background: #f7f7f7;
+    color: var(--color-brand);
+  }
+
+  .link:hover .linkIcon {
+    background: #fbeaee;
+    color: var(--color-brand);
+  }
+
+  .link:hover .chevron {
+    color: var(--color-brand);
+    transform: translateX(0.16rem);
+  }
+
+  .logout:hover {
+    background: #a8032f;
+  }
+
+  .deleteAccount:hover {
+    text-decoration: underline;
+  }
+
+  .deleteCancel:hover {
+    background: #202020;
+  }
+
+  .deleteConfirm:hover {
+    background: rgb(208 4 59 / 8%);
+  }
+}

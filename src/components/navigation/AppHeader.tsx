@@ -5,20 +5,28 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { BackIcon } from "@/components/icons/BackIcon";
+import { CalculatorIcon } from "@/components/icons/CalculatorIcon";
+import { CarIcon } from "@/components/icons/CarIcon";
 import { ChevronRightIcon } from "@/components/icons/ChevronRightIcon";
 import { CloseIcon } from "@/components/icons/CloseIcon";
 import { DocumentIcon } from "@/components/icons/DocumentIcon";
+import { HeartIcon } from "@/components/icons/HeartIcon";
 import { MenuIcon } from "@/components/icons/MenuIcon";
 import { PrivacyIcon } from "@/components/icons/PrivacyIcon";
+import { UserIcon } from "@/components/icons/UserIcon";
 import styles from "./app-header.module.css";
 
 const subscribeToDevice = () => () => undefined;
 
 const menuLinks = [
-  { href: "/create-account", label: "Mi cuenta" },
-  { href: "/favorites", label: "Favoritos" },
-  { href: "/car-list", label: "Explorar autos" },
-  { href: "/credit-simulator", label: "Simular crédito" },
+  { href: "/account", icon: <UserIcon />, label: "Mi cuenta" },
+  { href: "/favorites", icon: <HeartIcon />, label: "Favoritos" },
+  { href: "/car-list", icon: <CarIcon />, label: "Explorar autos" },
+  {
+    href: "/credit-simulator",
+    icon: <CalculatorIcon />,
+    label: "Simular crédito",
+  },
 ];
 
 const legalLinks = [
@@ -53,6 +61,15 @@ export function AppHeader() {
     getIsIOSDevice,
     () => false,
   );
+  const navigationDepthRef = useRef(0);
+  const previousPathnameRef = useRef(pathname);
+
+  useEffect(() => {
+    if (previousPathnameRef.current !== pathname) {
+      navigationDepthRef.current += 1;
+      previousPathnameRef.current = pathname;
+    }
+  }, [pathname]);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -94,11 +111,7 @@ export function AppHeader() {
   }, [isMenuOpen]);
 
   function handleBack() {
-    const cameFromThisApp = document.referrer
-      ? new URL(document.referrer).origin === window.location.origin
-      : false;
-
-    if (cameFromThisApp) {
+    if (navigationDepthRef.current > 0) {
       router.back();
       return;
     }
@@ -120,14 +133,16 @@ export function AppHeader() {
           </button>
         )}
 
-        <Image
-          alt="Carideal"
-          className={styles.logo}
-          height={55}
-          loading="eager"
-          src="/logos/carideal-header.png"
-          width={262}
-        />
+        <Link aria-label="Ir al inicio" className={styles.logoLink} href="/initial-screen">
+          <Image
+            alt="Carideal"
+            className={styles.logo}
+            height={55}
+            loading="eager"
+            src="/logos/carideal-header.png"
+            width={262}
+          />
+        </Link>
 
         <button
           aria-label="Abrir menú"
@@ -163,6 +178,15 @@ export function AppHeader() {
           role="dialog"
         >
           <div className={styles.menuTop}>
+            <div className={styles.menuBrand}>
+              <Image
+                alt="Carideal"
+                className={styles.menuBrandMark}
+                height={100}
+                src="/logos/carideal-logo-only-color.png"
+                width={476}
+              />
+            </div>
             <button
               aria-label="Cerrar menú"
               className={styles.closeButton}
@@ -176,7 +200,8 @@ export function AppHeader() {
 
           <nav aria-label="Navegación principal" className={styles.navigation}>
             {menuLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive =
+                pathname === link.href || pathname === `${link.href}/`;
 
               return (
                 <Link
@@ -186,12 +211,27 @@ export function AppHeader() {
                   key={link.href}
                   onNavigate={() => setIsMenuOpen(false)}
                 >
-                  <span>{link.label}</span>
+                  <span className={styles.menuLinkIcon}>{link.icon}</span>
+                  <span className={styles.menuLinkLabel}>{link.label}</span>
                   <ChevronRightIcon />
                 </Link>
               );
             })}
           </nav>
+
+          <div className={styles.promoCard}>
+            <Image
+              alt=""
+              className={styles.promoImage}
+              fill
+              sizes="(max-width: 400px) 70vw, 280px"
+              src="/images/initial-screen/menu-promo.webp"
+            />
+            <p className={styles.promoCopy}>
+              <span>Tu nuevo vehículo,</span>
+              <strong>Hoy.</strong>
+            </p>
+          </div>
 
           <footer className={styles.menuFooter}>
             {legalLinks.map((link) => (

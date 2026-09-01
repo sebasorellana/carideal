@@ -1,0 +1,78 @@
+.content {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.badge {
+  display: grid;
+  width: clamp(6.5rem, 26vw, 8rem);
+  height: clamp(6.5rem, 26vw, 8rem);
+  margin-bottom: clamp(2rem, 8vw, 2.75rem);
+  border-radius: 50%;
+  background: #43a047;
+  color: #fff;
+  place-items: center;
+}
+
+.badge svg {
+  width: 42%;
+  height: auto;
+}
+
+.title {
+  margin: 0;
+  color: #000;
+  font-size: clamp(2rem, 8vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.message {
+  max-width: 22rem;
+  margin: clamp(1.75rem, 7vw, 2.25rem) 0 0;
+  color: #000;
+  font-size: clamp(1.15rem, 4.6vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.caption {
+  max-width: 22rem;
+  margin: clamp(1.25rem, 5vw, 1.75rem) 0 0;
+  color: var(--color-muted);
+  font-size: clamp(0.9rem, 3.4vw, 1rem);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.caption a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2rem;
+}
+
+.action {
+  width: 100%;
+  margin-top: clamp(2.5rem, 10vw, 3.5rem);
+}
+
+@media (max-height: 700px) {
+  .badge {
+    margin-bottom: 1.25rem;
+  }
+
+  .message {
+    margin-top: 1rem;
+  }
+
+  .caption {
+    margin-top: 0.75rem;
+  }
+
+  .action {
+    margin-top: 1.5rem;
+  }
+}

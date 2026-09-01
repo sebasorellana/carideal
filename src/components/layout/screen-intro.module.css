@@ -1,5 +1,5 @@
 .intro {
-  margin-bottom: clamp(2.35rem, 7.4vw, 2.65rem);
+  margin-bottom: 2.4vw;
 }
 
 .title {
@@ -32,6 +32,10 @@
 
 .withoutAccent .subtitle {
   margin-top: clamp(0.6rem, 2.7vw, 0.8rem);
+}
+
+.withoutSubtitle .accent {
+  margin-bottom: 0;
 }
 
 @media (max-height: 900px) {

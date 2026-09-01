@@ -1,12 +1,31 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { FormField } from "@/components/forms/FormField";
+import { LocationFields } from "@/components/forms/LocationFields";
 import { PrimaryLink } from "@/components/forms/PrimaryLink";
 import { RangeSlider } from "@/components/forms/RangeSlider";
+import { SelectField } from "@/components/forms/SelectField";
+import { SearchIcon } from "@/components/icons/SearchIcon";
 import { ScreenIntro } from "@/components/layout/ScreenIntro";
 import layoutStyles from "@/components/layout/screen-layout.module.css";
 import { BorderedPanel } from "@/components/ui/BorderedPanel";
 import styles from "./page.module.css";
+
+const primaryColorSwatches: Record<string, string> = {
+  Amarillo: "#F5C518",
+  Azul: "#1E5AA8",
+  Beige: "#E4D5B7",
+  Blanco: "#FFFFFF",
+  Dorado: "#C8A951",
+  Gris: "#9B9B9B",
+  Marrón: "#6B4226",
+  Naranja: "#F2711C",
+  Negro: "#111111",
+  Plata: "#C7C9CB",
+  Rojo: "#D0043B",
+  Rosa: "#F2A3C4",
+};
+
+const primaryColors = Object.keys(primaryColorSwatches);
 
 export const metadata: Metadata = {
   title: "Encontremos tu próximo auto",
@@ -25,18 +44,7 @@ export default function OnboardingFirstSetupPage() {
         className={layoutStyles.content}
         aria-labelledby="onboarding-title"
       >
-        <div className={styles.helpRow}>
-          <Image
-            alt="Ayuda"
-            className={styles.helpIcon}
-            height={172}
-            src="/images/onboarding-first-setup/help-icon.webp"
-            width={172}
-          />
-        </div>
-
         <ScreenIntro
-          accent={false}
           title={
             <>
               Encontremos
@@ -45,23 +53,24 @@ export default function OnboardingFirstSetupPage() {
             </>
           }
           titleId="onboarding-title"
-        >
-          Cuéntanos qué estás buscando.
-        </ScreenIntro>
+        />
 
         <form className={styles.form} aria-label="Preferencias del automóvil">
-          <BorderedPanel>
-            <FormField
-              id="desired-model"
-              label="Marca y modelo deseado"
-              name="desiredModel"
-              placeholder="Nissan Sentra"
-              size="compact"
-              type="text"
-            />
-          </BorderedPanel>
+          <FormField
+            autoComplete="off"
+            hideLabel
+            icon={<SearchIcon />}
+            id="vehicle-search"
+            label="Buscar"
+            name="vehicleSearch"
+            placeholder="Marca o modelo"
+            size="compact"
+            type="search"
+          />
 
-          <BorderedPanel>
+          <LocationFields />
+
+          <BorderedPanel compact>
             <RangeSlider
               label="Rango de año del automóvil"
               maximum={2025}
@@ -70,7 +79,7 @@ export default function OnboardingFirstSetupPage() {
             />
           </BorderedPanel>
 
-          <BorderedPanel>
+          <BorderedPanel compact>
             <RangeSlider
               format="kilometers"
               label="Kilometraje deseado"
@@ -81,7 +90,7 @@ export default function OnboardingFirstSetupPage() {
             />
           </BorderedPanel>
 
-          <BorderedPanel>
+          <BorderedPanel compact>
             <RangeSlider
               format="currency"
               label="Mensualidad deseada"
@@ -92,13 +101,25 @@ export default function OnboardingFirstSetupPage() {
             />
           </BorderedPanel>
 
-          <div className={styles.submit}>
-            <PrimaryLink href="/car-list" shape="pill">
-              Buscar autos
-            </PrimaryLink>
-          </div>
+          <SelectField
+            id="primary-color"
+            label="Color primario"
+            name="primaryColor"
+            openDirection="up"
+            options={primaryColors}
+            placeholder="Selecciona un color"
+            required
+            size="compact"
+            swatches={primaryColorSwatches}
+          />
         </form>
       </section>
+
+      <div className={styles.submit}>
+        <PrimaryLink href="/car-list" shape="pill">
+          Buscar autos
+        </PrimaryLink>
+      </div>
     </main>
   );
 }

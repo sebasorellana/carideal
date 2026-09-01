@@ -3,6 +3,7 @@ import { PlaceholderScreen } from "@/components/layout/PlaceholderScreen";
 
 export const metadata: Metadata = {
   title: "Políticas de privacidad",
+  description: "La política de privacidad estará disponible próximamente.",
   robots: { index: false, follow: true },
 };
 

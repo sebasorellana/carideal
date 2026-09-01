@@ -1,6 +1,8 @@
 .form,
 .fields,
-.actions {
+.actions,
+.agreements,
+.submitGroup {
   display: grid;
 }
 
@@ -11,6 +13,22 @@
 .actions {
   gap: clamp(2.6rem, 8.2vw, 2.9rem);
   margin-top: clamp(2.6rem, 8.1vw, 2.9rem);
+}
+
+.agreements {
+  gap: clamp(0.8rem, 3vw, 1rem);
+}
+
+.submitGroup {
+  gap: 0.75rem;
+}
+
+.accountLink {
+  justify-self: center;
+  color: var(--color-brand);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-underline-offset: 0.2rem;
 }
 
 @media (max-height: 900px) {

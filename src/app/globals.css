@@ -7,7 +7,7 @@
   --color-control-border: #929292;
   --font-sans: Poppins, Arial, sans-serif;
   --page-gutter: clamp(1.25rem, 6.5vw, 2.5rem);
-  --app-header-height: clamp(5.25rem, 14.8vw, 6rem);
+  --app-header-height: calc(clamp(5.25rem, 14.8vw, 6rem) + env(safe-area-inset-top));
 }
 
 html {
@@ -61,6 +61,13 @@ textarea {
 img,
 svg {
   max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  html,
+  body {
+    overflow: hidden;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

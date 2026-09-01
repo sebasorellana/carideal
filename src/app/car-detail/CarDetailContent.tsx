@@ -1,11 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
-import { PrimaryLink } from "@/components/forms/PrimaryLink";
 import { HeartIcon } from "@/components/icons/HeartIcon";
+import { useFavorites } from "@/context/FavoritesContext";
 import styles from "./page.module.css";
 
+const vehicleId = "nissan-sentra-advance-2024";
 const image = "/images/car-list/sedan-orange.webp";
 
 const gallery = [
@@ -24,8 +26,9 @@ const highlights = [
 
 export function CarDetailContent() {
   const [activeImage, setActiveImage] = useState(0);
-  const [isFavorite, setIsFavorite] = useState(false);
   const [shareMessage, setShareMessage] = useState("");
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const isVehicleFavorite = isFavorite(vehicleId);
 
   async function handleShare() {
     const shareData = {
@@ -70,13 +73,13 @@ export function CarDetailContent() {
 
             <div className={styles.heroActions}>
               <button
-                aria-label={isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
-                aria-pressed={isFavorite}
-                className={`${styles.roundAction} ${isFavorite ? styles.favoriteActive : ""}`}
-                onClick={() => setIsFavorite((current) => !current)}
+                aria-label={isVehicleFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
+                aria-pressed={isVehicleFavorite}
+                className={`${styles.roundAction} ${isVehicleFavorite ? styles.favoriteActive : ""}`}
+                onClick={() => toggleFavorite(vehicleId)}
                 type="button"
               >
-                <HeartIcon filled={isFavorite} />
+                <HeartIcon filled={isVehicleFavorite} />
               </button>
               <button aria-label="Compartir vehículo" className={styles.roundAction} onClick={handleShare} type="button">
                 <Image
@@ -175,9 +178,14 @@ export function CarDetailContent() {
       </div>
 
       <div className={styles.financeDock}>
-        <PrimaryLink href="/credit-simulator" shape="pill">
-          Solicitar financiamiento
-        </PrimaryLink>
+        <div className={styles.financeSplitButton}>
+          <Link className={styles.financeSecondary} href="/credit-simulator">
+            Simular crédito
+          </Link>
+          <Link className={styles.financePrimary} href="/credit-simulator">
+            Solicitar financiación
+          </Link>
+        </div>
       </div>
 
       <p aria-live="polite" className={styles.shareStatus}>{shareMessage}</p>

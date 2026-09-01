@@ -2,27 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { HeartIcon } from "@/components/icons/HeartIcon";
+import { useFavorites } from "@/context/FavoritesContext";
+import type { Vehicle } from "@/data/vehicles";
 import styles from "./vehicle-card.module.css";
 
-export type Vehicle = {
-  fuel: string;
-  image: string;
-  mileage: string;
-  monthlyPayment: string;
-  name: string;
-  price: string;
-  transmission: string;
-  year: number;
-};
+export type { Vehicle };
 
 type VehicleCardProps = {
   vehicle: Vehicle;
 };
 
 export function VehicleCard({ vehicle }: VehicleCardProps) {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const isVehicleFavorite = isFavorite(vehicle.id);
 
   return (
     <article className={styles.card}>
@@ -40,13 +33,13 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
         <div className={styles.headingRow}>
           <h2 className={styles.name}>{vehicle.name}</h2>
           <button
-            aria-label={isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
-            aria-pressed={isFavorite}
-            className={`${styles.favorite} ${isFavorite ? styles.favoriteActive : ""}`}
-            onClick={() => setIsFavorite((current) => !current)}
+            aria-label={isVehicleFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
+            aria-pressed={isVehicleFavorite}
+            className={`${styles.favorite} ${isVehicleFavorite ? styles.favoriteActive : ""}`}
+            onClick={() => toggleFavorite(vehicle.id)}
             type="button"
           >
-            <HeartIcon filled={isFavorite} />
+            <HeartIcon filled={isVehicleFavorite} />
           </button>
         </div>
 

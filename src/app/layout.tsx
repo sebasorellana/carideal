@@ -2,8 +2,10 @@ import type { Metadata, Viewport } from "next";
 import "@fontsource/poppins/latin-400.css";
 import "@fontsource/poppins/latin-500.css";
 import "@fontsource/poppins/latin-800.css";
+import { DesktopNotice } from "@/components/layout/DesktopNotice";
 import { NavigationShell } from "@/components/layout/NavigationShell";
 import { getAbsoluteUrl, siteConfig } from "@/config/site";
+import { FavoritesProvider } from "@/context/FavoritesContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -102,7 +104,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es">
       <body>
-        <NavigationShell>{children}</NavigationShell>
+        <DesktopNotice />
+        <FavoritesProvider>
+          <NavigationShell>{children}</NavigationShell>
+        </FavoritesProvider>
         <script
           dangerouslySetInnerHTML={{ __html: structuredDataJson }}
           type="application/ld+json"

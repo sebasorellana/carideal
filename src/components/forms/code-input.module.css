@@ -1,0 +1,31 @@
+.codeRow {
+  display: flex;
+  min-width: 0;
+  gap: clamp(0.5rem, 2.5vw, 0.75rem);
+}
+
+.codeInput {
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: 1;
+  border: clamp(0.125rem, 0.45vw, 0.16rem) solid var(--color-control-border);
+  border-radius: clamp(0.85rem, 3.4vw, 1.2rem);
+  outline: 0;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-size: clamp(1.25rem, 5.2vw, 1.6rem);
+  font-weight: 600;
+  text-align: center;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.codeInput:focus-visible {
+  border-color: var(--color-ink);
+  box-shadow: 0 0 0 0.2rem rgb(0 0 0 / 8%);
+}
+
+@media (max-height: 650px) {
+  .codeInput {
+    border-radius: 0.75rem;
+  }
+}
