@@ -179,7 +179,7 @@ export function AccountContent() {
       {isDeleteConfirmOpen && (
         <div className={styles.deleteOverlay}>
           <button
-            aria-label="Cancelar"
+            aria-label="No"
             className={styles.deleteBackdrop}
             onClick={() => setIsDeleteConfirmOpen(false)}
             tabIndex={-1}
@@ -194,11 +194,8 @@ export function AccountContent() {
             role="alertdialog"
           >
             <p className={styles.deleteTitle} id="delete-confirm-title">
-              ¿Eliminar tu cuenta?
-            </p>
-            <p className={styles.deleteMessage}>
-              Esta acción no se puede deshacer. Vas a perder tus favoritos y
-              tus datos guardados.
+              ¿Deseas eliminar tu cuenta y con esto perder todos los datos
+              cargados de pre-calificación crediticia?
             </p>
 
             <div className={styles.deleteActions}>
@@ -208,10 +205,10 @@ export function AccountContent() {
                 ref={cancelDeleteRef}
                 type="button"
               >
-                Cancelar
+                No
               </button>
               <Link className={styles.deleteConfirm} href="/initial-screen">
-                Eliminar cuenta
+                Sí
               </Link>
             </div>
           </div>

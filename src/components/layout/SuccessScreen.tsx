@@ -8,6 +8,7 @@ type SuccessScreenProps = {
   actionHref: string;
   actionLabel: string;
   caption?: ReactNode;
+  className?: string;
   message: ReactNode;
   title: string;
   titleId: string;
@@ -17,12 +18,13 @@ export function SuccessScreen({
   actionHref,
   actionLabel,
   caption,
+  className,
   message,
   title,
   titleId,
 }: SuccessScreenProps) {
   return (
-    <main className={layoutStyles.page}>
+    <main className={`${layoutStyles.page} ${className ?? ""}`}>
       <section
         aria-labelledby={titleId}
         className={`${layoutStyles.content} ${styles.content}`}

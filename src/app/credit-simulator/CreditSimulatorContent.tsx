@@ -130,9 +130,10 @@ export function CreditSimulatorContent() {
   return (
     <main className={styles.page}>
       <div className={styles.content}>
-        <ScreenIntro title="Simulación de crédito" titleId="credit-simulator-title">
-          Tu financiamiento
-        </ScreenIntro>
+        <ScreenIntro
+          title="Simulación de crédito"
+          titleId="credit-simulator-title"
+        />
 
         <div className={styles.vehicleCard}>
           <div className={styles.vehicleImageWrap}>

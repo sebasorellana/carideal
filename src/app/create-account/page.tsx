@@ -4,6 +4,7 @@ import { AgreementField } from "@/components/forms/AgreementField";
 import { FormField } from "@/components/forms/FormField";
 import { PrimaryLink } from "@/components/forms/PrimaryLink";
 import { MailIcon } from "@/components/icons/MailIcon";
+import { PhoneIcon } from "@/components/icons/PhoneIcon";
 import { UserIcon } from "@/components/icons/UserIcon";
 import { ScreenIntro } from "@/components/layout/ScreenIntro";
 import layoutStyles from "@/components/layout/screen-layout.module.css";
@@ -57,6 +58,17 @@ export default function CreateAccountPage() {
               labelSpacing="tight"
               name="email"
               type="email"
+            />
+            <FormField
+              autoComplete="tel"
+              icon={<PhoneIcon />}
+              id="phone"
+              inputMode="tel"
+              label="Celular"
+              labelSpacing="tight"
+              name="phone"
+              placeholder="55 1234 5678"
+              type="tel"
             />
           </div>
 

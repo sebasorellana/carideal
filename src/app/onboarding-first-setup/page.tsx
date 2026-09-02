@@ -103,7 +103,7 @@ export default function OnboardingFirstSetupPage() {
 
           <SelectField
             id="primary-color"
-            label="Color primario"
+            label="Color"
             name="primaryColor"
             openDirection="up"
             options={primaryColors}
