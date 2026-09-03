@@ -377,6 +377,13 @@
   outline-offset: 0.1rem;
 }
 
+.versionLabel {
+  margin: 0.4rem 0 0;
+  color: #aaa;
+  font-size: 0.72rem;
+  text-align: center;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .menuLink:hover {
     padding-left: 0.3rem;

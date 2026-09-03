@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
+import {
+  mileageRange,
+  monthlyPaymentRange,
+  yearRange,
+} from "@/components/filters/filterRanges";
+import formStyles from "@/components/forms/form-controls.module.css";
 import { FormField } from "@/components/forms/FormField";
 import { LocationFields } from "@/components/forms/LocationFields";
-import { PrimaryLink } from "@/components/forms/PrimaryLink";
 import { RangeSlider } from "@/components/forms/RangeSlider";
 import { SelectField } from "@/components/forms/SelectField";
 import { SearchIcon } from "@/components/icons/SearchIcon";
@@ -55,7 +60,12 @@ export default function OnboardingFirstSetupPage() {
           titleId="onboarding-title"
         />
 
-        <form className={styles.form} aria-label="Preferencias del automóvil">
+        <form
+          action="/car-list"
+          aria-label="Preferencias del automóvil"
+          className={styles.form}
+          method="get"
+        >
           <FormField
             autoComplete="off"
             hideLabel
@@ -73,8 +83,8 @@ export default function OnboardingFirstSetupPage() {
           <BorderedPanel compact>
             <RangeSlider
               label="Rango de año del automóvil"
-              maximum={2025}
-              minimum={2020}
+              maximum={yearRange.maximum}
+              minimum={yearRange.minimum}
               name="year"
             />
           </BorderedPanel>
@@ -83,10 +93,10 @@ export default function OnboardingFirstSetupPage() {
             <RangeSlider
               format="kilometers"
               label="Kilometraje deseado"
-              maximum={125000}
-              minimum={0}
+              maximum={mileageRange.maximum}
+              minimum={mileageRange.minimum}
               name="mileage"
-              step={5000}
+              step={mileageRange.step}
             />
           </BorderedPanel>
 
@@ -94,10 +104,10 @@ export default function OnboardingFirstSetupPage() {
             <RangeSlider
               format="currency"
               label="Mensualidad deseada"
-              maximum={8000}
-              minimum={2000}
+              maximum={monthlyPaymentRange.maximum}
+              minimum={monthlyPaymentRange.minimum}
               name="monthlyPayment"
-              step={500}
+              step={monthlyPaymentRange.step}
             />
           </BorderedPanel>
 
@@ -112,14 +122,17 @@ export default function OnboardingFirstSetupPage() {
             size="compact"
             swatches={primaryColorSwatches}
           />
+
+          <div className={styles.submit}>
+            <button
+              className={`${formStyles.primaryButton} ${formStyles.pill}`}
+              type="submit"
+            >
+              Buscar autos
+            </button>
+          </div>
         </form>
       </section>
-
-      <div className={styles.submit}>
-        <PrimaryLink href="/car-list" shape="pill">
-          Buscar autos
-        </PrimaryLink>
-      </div>
     </main>
   );
 }

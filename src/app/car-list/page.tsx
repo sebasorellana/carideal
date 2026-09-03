@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { CarFilterSheet } from "@/components/filters/CarFilterSheet";
+import { FilterControls } from "@/components/filters/FilterControls";
 import { VehicleCard } from "@/components/ui/VehicleCard";
 import { vehicles } from "@/data/vehicles";
 import styles from "./page.module.css";
@@ -28,7 +30,11 @@ export default function CarListPage() {
               </p>
             </div>
 
-            <CarFilterSheet />
+            <div className={styles.introActions}>
+              <Suspense fallback={<CarFilterSheet />}>
+                <FilterControls />
+              </Suspense>
+            </div>
           </div>
 
           <div className={styles.list}>

@@ -7,6 +7,7 @@ export const siteConfig = {
   name: "Carideal",
   shortName: "Carideal",
   url: new URL(configuredSiteUrl ?? "http://localhost:3000"),
+  version: process.env.NEXT_PUBLIC_APP_VERSION ?? "0.0.0",
 };
 
 export function getAbsoluteUrl(path = "/") {

@@ -14,6 +14,7 @@ import { HeartIcon } from "@/components/icons/HeartIcon";
 import { MenuIcon } from "@/components/icons/MenuIcon";
 import { PrivacyIcon } from "@/components/icons/PrivacyIcon";
 import { UserIcon } from "@/components/icons/UserIcon";
+import { siteConfig } from "@/config/site";
 import styles from "./app-header.module.css";
 
 const subscribeToDevice = () => () => undefined;
@@ -245,6 +246,8 @@ export function AppHeader() {
                 {link.label}
               </Link>
             ))}
+
+            <p className={styles.versionLabel}>Versión {siteConfig.version}</p>
           </footer>
         </aside>
       </div>

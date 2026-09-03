@@ -146,7 +146,23 @@ export function SelectField({
           </ul>
         )}
 
-        <input name={name} required={required} type="hidden" value={selected} />
+        <select
+          aria-hidden="true"
+          className={styles.hiddenSelect}
+          disabled={disabled}
+          name={name}
+          onChange={(event) => handleSelect(event.target.value)}
+          required={required}
+          tabIndex={-1}
+          value={selected}
+        >
+          <option value="" />
+          {options.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   );

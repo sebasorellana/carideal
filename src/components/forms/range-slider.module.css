@@ -20,12 +20,6 @@
   line-height: 1.2;
 }
 
-.valueDescription {
-  color: var(--color-muted);
-  font-size: 0.85em;
-  font-weight: 400;
-}
-
 .track {
   position: relative;
   height: 1.5rem;

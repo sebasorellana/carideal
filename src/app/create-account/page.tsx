@@ -39,6 +39,7 @@ export default function CreateAccountPage() {
               label="Nombre"
               labelSpacing="tight"
               name="firstName"
+              placeholder="Mariana"
               type="text"
             />
             <FormField
@@ -48,6 +49,7 @@ export default function CreateAccountPage() {
               label="Apellido"
               labelSpacing="tight"
               name="lastName"
+              placeholder="Torres"
               type="text"
             />
             <FormField
@@ -57,6 +59,7 @@ export default function CreateAccountPage() {
               label="Email"
               labelSpacing="tight"
               name="email"
+              placeholder="mariana.torres@email.com"
               type="email"
             />
             <FormField

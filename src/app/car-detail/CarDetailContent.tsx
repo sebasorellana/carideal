@@ -3,7 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { CalendarIcon } from "@/components/icons/CalendarIcon";
+import { DoorIcon } from "@/components/icons/DoorIcon";
+import { EngineIcon } from "@/components/icons/EngineIcon";
+import { FuelIcon } from "@/components/icons/FuelIcon";
+import { GearIcon } from "@/components/icons/GearIcon";
 import { HeartIcon } from "@/components/icons/HeartIcon";
+import { SeatIcon } from "@/components/icons/SeatIcon";
+import { WheelIcon } from "@/components/icons/WheelIcon";
 import { useFavorites } from "@/context/FavoritesContext";
 import styles from "./page.module.css";
 
@@ -15,13 +22,22 @@ const gallery = [
   { label: "Detalle del frente", origin: "78% 58%", position: "center", scale: 1.55 },
   { label: "Vista lateral", origin: "25% 54%", position: "center", scale: 1.45 },
   { label: "Detalle de rueda y carrocería", origin: "36% 66%", position: "center", scale: 2 },
+  { label: "Detalle del faro", origin: "84% 60%", position: "center", scale: 2.1 },
+  { label: "Vista del interior", origin: "50% 42%", position: "center", scale: 1.3 },
 ];
 
-const highlights = [
-  { height: 68, icon: "/images/car-detail/touch-icon.png", label: "Pantalla táctil", width: 70 },
-  { height: 64, icon: "/images/car-detail/camera-icon.png", label: "Cámara de reversa", width: 75 },
-  { height: 63, icon: "/images/car-detail/air-icon.png", label: "Aire acondicionado", width: 64 },
-  { height: 63, icon: "/images/car-detail/bluetooth-icon.png", label: "Bluetooth", width: 39 },
+const vehicleDescription = [
+  "El Nissan Sentra Advance 2024 combina un diseño moderno con tecnología de punta, ideal para el día a día en la ciudad y para viajes largos. Cuenta con un motor eficiente de 2.0L, transmisión automática suave y un interior cómodo pensado para toda la familia.",
+  "Este seminuevo fue certificado por Carideal, lo que garantiza su historial verificado, inspección mecánica completa y el respaldo directo de Nissan.",
+];
+
+const featuredSpecs = [
+  { icon: <SeatIcon />, label: "Interior", value: "Tela" },
+  { icon: <DoorIcon />, label: "Nro. de puertas", value: "4 puertas" },
+  { icon: <FuelIcon />, label: "Combustible", value: "Gasolina" },
+  { icon: <GearIcon />, label: "Transmisión", value: "Automático" },
+  { icon: <EngineIcon />, label: "Motor", value: "2.0L 4 cil." },
+  { icon: <WheelIcon />, label: "Tracción", value: "Delantera" },
 ];
 
 export function CarDetailContent() {
@@ -91,10 +107,6 @@ export function CarDetailContent() {
                 />
               </button>
             </div>
-
-            <a className={styles.helpButton} href="mailto:ayuda@carideal.com">
-              <Image alt="Ayuda" height={172} src="/images/onboarding-first-setup/help-icon.webp" width={172} />
-            </a>
           </div>
 
           <div className={styles.thumbnails}>
@@ -126,21 +138,18 @@ export function CarDetailContent() {
 
         <div className={styles.content}>
           <section aria-labelledby="vehicle-title">
-            <h1 className={styles.title} id="vehicle-title">Nissan Sentra Advance 2024</h1>
-
-            <div className={styles.mileage}>
-              <Image alt="" height={44} src="/images/car-detail/km-icon.png" width={51} />
-              <span>125,000 km</span>
-            </div>
+            <h1 className={styles.title} id="vehicle-title">Nissan Sentra Advance</h1>
 
             <dl className={styles.specifications}>
               <div className={styles.specification}>
-                <Image alt="" height={79} src="/images/car-detail/transmition-icon.png" width={79} />
-                <div><dt>Transmisión</dt><dd>Automático</dd></div>
+                <span className={styles.specificationIcon}>
+                  <CalendarIcon />
+                </span>
+                <div><dt>Año</dt><dd>2024</dd></div>
               </div>
               <div className={styles.specification}>
-                <Image alt="" height={73} src="/images/car-detail/gas-icon.png" width={73} />
-                <div><dt>Combustible</dt><dd>Gasolina</dd></div>
+                <Image alt="" height={44} src="/images/car-detail/km-icon.png" width={51} />
+                <div><dt>Kilómetros</dt><dd>125,000 km</dd></div>
               </div>
               <div className={styles.specification}>
                 <span aria-hidden="true" className={styles.colorSwatch} />
@@ -162,18 +171,27 @@ export function CarDetailContent() {
 
           <section aria-labelledby="highlights-title" className={styles.highlightsSection}>
             <h2 id="highlights-title">Características destacadas</h2>
-            <ul className={styles.highlights}>
-              {highlights.map(({ height, icon, label, width }) => (
-                <li key={label}>
-                  <span className={styles.highlightIcon}>
-                    <Image alt="" height={height} src={icon} width={width} />
+            <dl className={styles.featuredSpecs}>
+              {featuredSpecs.map(({ icon, label, value }) => (
+                <div className={styles.featuredSpec} key={label}>
+                  <span aria-hidden="true" className={styles.featuredSpecIcon}>
+                    {icon}
                   </span>
-                  <span>{label}</span>
-                </li>
+                  <div className={styles.featuredSpecText}>
+                    <dt>{label}</dt>
+                    <dd>{value}</dd>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </dl>
           </section>
 
+          <section aria-labelledby="details-title" className={styles.detailsSection}>
+            <h2 id="details-title">Más detalles</h2>
+            {vehicleDescription.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </section>
         </div>
       </div>
 
@@ -182,8 +200,8 @@ export function CarDetailContent() {
           <Link className={styles.financeSecondary} href="/credit-simulator">
             Simular crédito
           </Link>
-          <Link className={styles.financePrimary} href="/credit-simulator">
-            Solicitar financiación
+          <Link className={styles.financePrimary} href="/financing-confirmation">
+            De contado
           </Link>
         </div>
       </div>
